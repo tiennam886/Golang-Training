@@ -19,8 +19,7 @@ func main(){
 }
 func checkDivisible(num int) int{
 	way := 0
-	var leader int
-	for leader=1; leader<=num/2; leader++ {
+	for leader:=1; leader<=num/2; leader++ {
 		if (num-leader)%leader ==0 {
 			way +=1
 		}
