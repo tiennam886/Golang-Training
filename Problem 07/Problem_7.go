@@ -17,8 +17,7 @@ func main(){
 	fmt.Scanln(&nQ)
 	for i:=0; i<nQ;i++{
 		var spendCoin int
-		var k int
-		k=0
+		k :=0
 		fmt.Scan(&spendCoin)
 		for j:=0; j<nShop;j++{
 			if priceShops[j]<=spendCoin{
