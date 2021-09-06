@@ -10,9 +10,6 @@ import "fmt"
 func main(){
 	var num int
 	fmt.Scanln(&num)
-	if num <1{
-		fmt.Println("Can not solved")
-	}
 	fmt.Println(checkDivisible(num))
 
 }
