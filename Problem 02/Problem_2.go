@@ -10,7 +10,11 @@ import "fmt"
 func main(){
 	var num int
 	fmt.Scanln(&num)
-	fmt.Println(checkDivisible(num))
+	if num <1{
+		fmt.Println("Can not solved")
+	}else {
+		fmt.Println(checkDivisible(num))
+	}
 
 }
 func checkDivisible(num int) int{
