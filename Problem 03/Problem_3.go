@@ -7,8 +7,13 @@ import (
 func main() {
 	var nestedSize int
 	fmt.Scanln(&nestedSize)
-	nestedSlice := initMatrix(nestedSize)
-	fmt.Println(Solve(nestedSlice, nestedSize))
+	if nestedSize < 1 {
+		fmt.Println("Can not solve")
+	} else {
+		nestedSlice := initMatrix(nestedSize)
+		fmt.Println(Solve(nestedSlice, nestedSize))
+
+	}
 }
 
 func initMatrix(nestedSize int) [][]int{
@@ -22,6 +27,8 @@ func initMatrix(nestedSize int) [][]int{
 	}
 	return nestedSlice
 }
+
+
 func Solve(nestedSlice [][]int, nestedSize int) int{
 	for i:=1;i<nestedSize;i++ {
 		for j:=1;j<nestedSize;j++{
