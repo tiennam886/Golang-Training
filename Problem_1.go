@@ -8,11 +8,13 @@ import (
 )
 
 func main() {
-    var tableCard string
+    	var tableCard string
 	fmt.Scanln(&tableCard)
+	
 	consoleReader := bufio.NewReader(os.Stdin)
 	input, _ := consoleReader.ReadString('\n')
 	handCards := strings.Split(input, " ")
+	
 	var result string
 	result = checkCard(tableCard, handCards)
 	fmt.Println(result)
