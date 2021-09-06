@@ -1,41 +1,44 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"os"
+	"fmt"
+)
+var (
+	ans int64 
+	n int
+	m int
+	save = make([]int, 3)
 
-// y = x + p and y = -x + q has intersection point is ( (q-p)/2;(p+q)/2)
-// hence the point is int when p+q is divisible by 2
-// => result is number of pair p,q has even sum
-func main(){
-	var t int
-	const N int =1e5
-	var a [N]int
-	fmt.Scanln(&t)
-	for i:=0; i<t; i++{
-		var nP int
-		fmt.Scanln(&nP)
-		evenP :=0
-		for i:=0; i<nP;i++{
-			var x int
-			fmt.Scan(&x)
-			if x%2==0{
-				evenP +=1
-			}
-		}
-		var nQ int
-		fmt.Scanln(&nQ)
-		evenQ :=0
-		for i:=0; i<nQ;i++{
-			var x int
-			fmt.Scan(&x)
-			if x%2==0{
-				evenQ +=1
-			}
-		}
-		a[i] = evenQ*evenP+(nP-evenP)*(nQ-evenQ)
+	r = bufio.NewReader(os.Stdin)
+	w = bufio.NewWriter(os.Stdout)
+)
 
+
+func solve(){
+	save[0]=0
+	save[1]=0
+	ans = 0
+	_, _ = fmt.Fscan(r, &n)
+	for i:=1;i<=n;i++{
+		var x int 
+		_, _ = fmt.Fscan(r, &x)
+		save[x%2]++
 	}
-	fmt.Println("\nOutput:")
-	for i:=0; i<t;i++{
-		fmt.Println(a[i])
+	_, _ = fmt.Fscan(r, &m)
+	for i:=1;i<=m;i++{
+		var x int 
+		_, _ = fmt.Fscan(r, &x)
+		ans += (int64(save[x%2]))	
+	}
+	_, _ = fmt.Println(int64(ans))
+}
+func main(){
+	defer w.Flush()
+	var te int 
+	_, _ = fmt.Fscan(r, &te)
+	for i := 1; i <= te; i++{
+		solve()
 	}
 }
