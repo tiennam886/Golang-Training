@@ -1,30 +1,51 @@
-package main
-
-import "fmt"
-
-func main(){
-	const N int = 1e5
-	var n int
-	fmt.Scanln(&n)
-	if n<2{
-		return
-	}
-
-	var queues [N]int
-	for i:=0;i<n;i++{
-		var k int
-		fmt.Scan(&k)
-		queues[i]=k
-	}
-	remain := queues[0]
-	currentPos :=0
-	timer := 0
-	for remain > 0{
-		timer +=1
-		remain = queues[currentPos+1]-timer
-		currentPos = (currentPos+1)%n
-	}
-	fmt.Println("\nOutput:")
-	fmt.Println(currentPos+1)
-
-}
+    package main
+     
+    import (
+    	"bufio"
+    	"fmt"
+    	"os"
+    	"sort"
+    )
+     
+    const N int64 = 1e5 + 10
+     
+    var (
+    	n     int
+    	m     int
+    	nShop [N]int
+     
+    	r = bufio.NewReader(os.Stdin)
+    	w = bufio.NewWriter(os.Stdout)
+    )
+     
+    func main() {
+    	defer w.Flush()
+    	solved()
+    }
+    func solved() {
+    	_, _ = fmt.Fscan(r, &n)
+    	for i := 0; i < n; i++ {
+    		var x int
+    		_, _ = fmt.Fscan(r, &x)
+    		nShop[i] = x
+    	}
+    	sort.Ints(nShop[0:n])
+    	_, _ = fmt.Fscan(r, &m)
+    	for i := 0; i < m; i++ {
+    		var x int
+    		_, _ = fmt.Fscan(r, &x)
+    		l := 0
+    		r := n
+    		var mid int
+    		for l < r {
+    			mid = (l + r) / 2
+    			if nShop[mid] <= x {
+    				l = mid + 1
+    			} else {
+    				r = mid
+    			}
+    		}
+    		fmt.Println(l)
+     
+    	}
+    }
