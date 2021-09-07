@@ -1,33 +1,52 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"sort"
+)
 
-func main(){
-	var nShop int
-	const N int =1e5
-	var priceShops [N]int
-	var nShopCanBuy [N]int
-	fmt.Scanln(&nShop)
-	for i:=0; i<nShop;i++{
+const N int64 = 1e5 + 10
+
+var (
+	n     int
+	m     int
+	nShop [N]int
+
+	r = bufio.NewReader(os.Stdin)
+	w = bufio.NewWriter(os.Stdout)
+)
+
+func main() {
+	defer w.Flush()
+	solved()
+}
+func solved() {
+	_, _ = fmt.Fscan(r, &n)
+	for i := 0; i < n; i++ {
 		var x int
-		fmt.Scan(&x)
-		priceShops[i]=x
+		_, _ = fmt.Fscan(r, &x)
+		nShop[i] = x
 	}
-	var nQ int
-	fmt.Scanln(&nQ)
-	for i:=0; i<nQ;i++{
-		var spendCoin int
-		k :=0
-		fmt.Scan(&spendCoin)
-		for j:=0; j<nShop;j++{
-			if priceShops[j]<=spendCoin{
-				k+=1
+	sort.Ints(nShop[0:n])
+	_, _ = fmt.Fscan(r, &m)
+	for i := 0; i < m; i++ {
+		var x int
+		_, _ = fmt.Fscan(r, &x)
+		l := 0
+		r := n
+		var mid int
+		for l < r {
+			mid = (l + r) / 2
+			if nShop[mid] <= x {
+				l = mid + 1
+			} else {
+				r = mid
 			}
 		}
-		nShopCanBuy[i]=k
-	}
-	fmt.Println("\nOutput:")
-	for i:=0; i<nQ;i++{
-		fmt.Println(nShopCanBuy[i])
+		fmt.Println(l)
+
 	}
 }
+
