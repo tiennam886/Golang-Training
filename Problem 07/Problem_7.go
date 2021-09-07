@@ -30,6 +30,7 @@ func solved() {
 		nShop[i] = x
 	}
 	sort.Ints(nShop[0:n])
+	// sort min->max
 	_, _ = fmt.Fscan(r, &m)
 	for i := 0; i < m; i++ {
 		var x int
@@ -45,6 +46,7 @@ func solved() {
 				r = mid
 			}
 		}
+		// find the minimum position of x that x >= sorted_nShop[i]
 		fmt.Println(l)
 
 	}
