@@ -8,12 +8,11 @@ func main() {
 	var nestedSize int
 	fmt.Scanln(&nestedSize)
 	if nestedSize < 1 {
-		fmt.Println("Can not solve")
-	} else {
-		nestedSlice := initMatrix(nestedSize)
-		fmt.Println(Solve(nestedSlice, nestedSize))
-
-	}
+		return
+	} 
+	nestedSlice := initMatrix(nestedSize)
+	fmt.Println(Solve(nestedSlice, nestedSize))
+	return
 }
 
 func initMatrix(nestedSize int) [][]int{
