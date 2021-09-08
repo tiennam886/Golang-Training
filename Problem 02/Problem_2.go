@@ -7,21 +7,21 @@ import "fmt"
 // then n-l is number of non-leader employees
 // hence, n-l is divisible by l
 
-func main(){
+func main() {
 	var num int
 	fmt.Scanln(&num)
-	if num <1{
-		fmt.Println("Can not solved")
-	}else {
-		fmt.Println(checkDivisible(num))
+	if num < 1 {
+		return
 	}
+	fmt.Println(checkDivisible(num))
+	return
 
 }
-func checkDivisible(num int) int{
+func checkDivisible(num int) int {
 	way := 0
-	for leader:=1; leader<=num/2; leader++ {
-		if (num-leader)%leader ==0 {
-			way +=1
+	for leader := 1; leader <= num/2; leader++ {
+		if (num-leader)%leader == 0 {
+			way += 1
 		}
 	}
 	return way
